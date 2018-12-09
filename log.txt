@@ -1,0 +1,73 @@
+generation: 0, new snakes:  100
+generation 0 average: -6.48
+winner: 88, score: 362
+winner: 24, score: 50
+winner: 42, score: 31
+winner: 13, score: 6
+winner: 74, score: 6
+winner: 4, score: 4
+winner: 11, score: 4
+winner: 12, score: 4
+winner: 14, score: 4
+winner: 19, score: 4
+generation: 1, new snakes 100
+generation 1 average: 36.23
+winner: 88-1, score: 1031
+winner: 88-5, score: 805
+winner: 88-8, score: 554
+winner: 88-7, score: 408
+winner: 88-4, score: 358
+winner: 88-2, score: 293
+winner: 88-6, score: 266
+winner: 88-3, score: 257
+winner: 24-16, score: 109
+winner: 24-18, score: 86
+generation: 2, new snakes 100
+generation 2 average: 250.46
+winner: 88-1-8, score: 1086
+winner: 88-2-59, score: 967
+winner: 88-8-25, score: 906
+winner: 88-2-52, score: 875
+winner: 88-7-37, score: 836
+winner: 88-8-21, score: 787
+winner: 88-2-54, score: 742
+winner: 88-3-71, score: 730
+winner: 88-6-68, score: 726
+winner: 88-1-0, score: 711
+generation: 3, new snakes 100
+generation 3 average: 274.95
+winner: 88-2-59-12, score: 924
+winner: 88-8-21-53, score: 876
+winner: 88-8-25-22, score: 860
+winner: 88-2-52-38, score: 800
+winner: 88-2-52-35, score: 788
+winner: 88-1-0-94, score: 780
+winner: 88-8-21-52, score: 760
+winner: 88-3-71-76, score: 686
+winner: 88-1-8-8, score: 680
+winner: 88-6-68-88, score: 661
+generation: 4, new snakes 100
+generation 4 average: 234.43
+winner: 88-8-21-53-16, score: 996
+winner: 88-3-71-76-77, score: 813
+winner: 88-1-8-8-88, score: 800
+winner: 88-8-21-52-63, score: 767
+winner: 88-1-8-8-86, score: 746
+winner: 88-2-52-35-43, score: 720
+winner: 88-8-25-22-22, score: 699
+winner: 88-1-0-94-59, score: 689
+winner: 88-2-59-12-6, score: 648
+winner: 88-8-21-53-11, score: 601
+generation: 5, new snakes 100
+generation 5 average: 291.18
+winner: 88-8-21-52-63-33, score: 927
+winner: 88-8-21-53-11-96, score: 910
+winner: 88-2-52-35-43-55, score: 764
+winner: 88-8-21-52-63-38, score: 722
+winner: 88-1-0-94-59-74, score: 700
+winner: 88-2-52-35-43-56, score: 669
+winner: 88-8-21-53-16-6, score: 661
+winner: 88-3-71-76-77-18, score: 653
+winner: 88-8-21-53-11-97, score: 649
+winner: 88-1-0-94-59-70, score: 648
+generation: 6, new snakes 100

@@ -1,0 +1,19 @@
+{
+  "name": "snake-ai",
+  "version": "0.0.0",
+  "description": "Snake that learn to play with deep neural net",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@marcster/snake-js": "^1.0.1"
+  }
+}
