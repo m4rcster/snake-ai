@@ -169,7 +169,7 @@ let Darwin = require('./src/darwin');
 const snakesPerGen = 10;
 const gameSpeed = 50;
 
-const json = require('./save-0812-50.json');
+const json = require('./data/save-0812-50.json');
 
 let darwin = new Darwin(snakesPerGen);
 //darwin.fromJson(json)
