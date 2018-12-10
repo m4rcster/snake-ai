@@ -1,15 +1,13 @@
 const fs = require('fs');
 const util = require('util');
 const logFile = fs.createWriteStream('log.txt', { flags: 'w' });
-const saveFile = fs.createWriteStream('save.json', { flags: 'w' });
 
 function log() {
   logFile.write(util.format.apply(null, arguments) + '\n');
-  //logFile.write(util.format.apply(null, arguments) + '\n');
 }
 
 function save() {
-  saveFile.write(util.format.apply(null, arguments));
+  fs.writeFile('save.json', util.format.apply(null, arguments), () => {});
 }
 
 const Brain = require('./brain');
@@ -36,11 +34,20 @@ class Darwin {
       this.individuals.push(brain);
     }
     log('generation: ' + this.currentGeneration + ', new snakes: ', this.individuals.length);
-    //log(this)
   }
 
   fromJson(json) {
-    this.individuals = JSON.parse(json.individuals);
+    this.individuals = [];
+    this.currentGeneration = json.currentGeneration || 0;
+    this.individualsPerGeneration = json.individualsPerGeneration;
+    this.mutationRate = json.mutationRate;
+    this.winnerRate = json.winnerRate;
+
+    for(let i = 0; i < json.individuals.length; i++) {
+      this.individuals.push(Object.assign(new Brain, json.individuals[i]));
+    }
+
+    console.log(this.individuals)
   }
 
   get individual() {
@@ -74,12 +81,11 @@ class Darwin {
       }
     }
 
-    //log('\n***\n');
     this.currentGeneration++;
 
     log('generation: ' + this.currentGeneration + ', new snakes', nextIndividuals.length);
+
     this.individuals = nextIndividuals;
-    //log(this);
   }
 
   mutate(individual, id) {
@@ -92,7 +98,6 @@ class Darwin {
 
     let mutationCount = Math.round(brain.synapses * this.mutationRate);
 
-
     for(let i = 0; i < mutationCount; i++) {
       let layerIndex = Math.floor(Math.random() * brain.layers.length);
       let layer = brain.layers[layerIndex];
@@ -103,26 +108,6 @@ class Darwin {
       synapse = this.randomFromTo(range.min, range.max);
     }
 
-    /*
-    // loop through layers
-    for(let i = 0; i < brain.layers.length; i++) {
-      let layer = brain.layers[i];
-
-      // loop through neurons
-      for(let n = 0; n < layer.length; n++) {
-        let neuron = layer[n];
-
-        let mutationCount = Math.ceil(neuron.length * this.mutationRate);
-
-        for(let j = 0; j < mutationCount; j++) {
-          let index = Math.floor(Math.random() * neuron.length);
-          let weight = this.randomFromTo(range.min, range.max);
-
-          neuron[index] = weight;
-        }
-      }
-    }
-    */
     return brain;
   }
 
