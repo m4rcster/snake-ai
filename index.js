@@ -167,10 +167,13 @@ class SmartSnake extends Snake {
 
 
 let Darwin = require('./darwin');
-const snakesPerGen = 100;
+const snakesPerGen = 10;
 const gameSpeed = 50;
 
+const json = require('./save-0812-50.json');
+
 let darwin = new Darwin(snakesPerGen);
+darwin.fromJson(json)
 
 let game = new SmartSnake(15, 15, () => {}, gameSpeed);
 
@@ -214,24 +217,6 @@ function turn(inputs, dx, dy) {
       key = 'right';
     }
   }
-  /*
-
-    switch (key) {
-      case 0:
-        key = 'left';
-        break;
-      case 1:
-        key = 'up';
-        break;
-      case 2:
-        key = 'right';
-        break;
-      case 3:
-        key = 'down';
-        break;
-      default:
-    }
-    */
 
   game.debug('>' + key)
 
@@ -248,7 +233,3 @@ function dead() {
   game.handleKey('space');
 
 }
-
-
-//darwin.breed();
-//let game = new SmartSnake(10, 10, () => {}, 200);
