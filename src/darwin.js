@@ -1,15 +1,4 @@
-const fs = require('fs');
-const util = require('util');
-const logFile = fs.createWriteStream('log.txt', { flags: 'w' });
-
-function log() {
-  logFile.write(util.format.apply(null, arguments) + '\n');
-}
-
-function save() {
-  fs.writeFile('save.json', util.format.apply(null, arguments), () => {});
-}
-
+const { log, save } = require('./utils');
 const Brain = require('./brain');
 
 let inputLayer = 6;
@@ -31,6 +20,7 @@ class Darwin {
       let brain = new Brain([inputLayer, ...hiddenLayer, outputLayer]);
       brain.id = i;
       brain.score = 0;
+      brain.fitness = 0;
       this.individuals.push(brain);
     }
     log('generation: ' + this.currentGeneration + ', new snakes: ', this.individuals.length);
@@ -63,19 +53,19 @@ class Darwin {
   }
 
   breed() {
-    this.individuals.sort((a, b) => b.score - a.score);
+    this.individuals.sort((a, b) => b.fitness - a.fitness);
     save(JSON.stringify(this));
 
     let winnerCount = Math.ceil(this.individuals.length * this.winnerRate);
 
     let nextIndividuals = [];
 
-    var average = this.individuals.map(s => s.score).reduce((p, c) => p + c, 0) / this.individuals.length;
+    var average = this.individuals.map(s => s.fitness).reduce((p, c) => p + c, 0) / this.individuals.length;
     log('generation ' + this.currentGeneration + ' average: ' + average);
 
     for(let i = 0; i < winnerCount; i++) {
       let individual = this.individuals[i];
-      log('winner: ' + individual.id + ', score: ' + individual.score);
+      log('winner: ' + individual.id + ', score: ' + individual.score + ', fitness: ' + individual.fitness);
       for(let j = 0; j < 1 / this.winnerRate; j++) {
         nextIndividuals.push(this.mutate(individual, i * winnerCount + j));
       }

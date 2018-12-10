@@ -4,12 +4,11 @@ class SmartSnake extends Snake {
 
   loop() {
     super.loop();
+
     this.dope();
 
     let inputs = this.logic();
     inputs = inputs.map(i => (i) ? 1 : 0)
-    //this.debug('' + inputs);
-
 
     turn(inputs, this.snake.dx, this.snake.dy);
   }
@@ -166,14 +165,14 @@ class SmartSnake extends Snake {
 }
 
 
-let Darwin = require('./darwin');
+let Darwin = require('./src/darwin');
 const snakesPerGen = 10;
 const gameSpeed = 50;
 
 const json = require('./save-0812-50.json');
 
 let darwin = new Darwin(snakesPerGen);
-darwin.fromJson(json)
+//darwin.fromJson(json)
 
 let game = new SmartSnake(15, 15, () => {}, gameSpeed);
 
@@ -225,11 +224,14 @@ function turn(inputs, dx, dy) {
 
 function dead() {
   //darwin.log('Snake ' + snake.id + ' is dead, score: ' + game.score + ' dopamine: ' + game.dopamine);
-  darwin.individual.score = game.dopamine;
+  darwin.individual.score = game.score;
+  darwin.individual.fitness = game.dopamine;
 
+  // load next snake in darwin
   darwin.next();
   snake = darwin.individual;
-  game.handleKey('space');
-  game.handleKey('space');
 
+  // restart game with new snake
+  game.handleKey('space');
+  game.handleKey('space');
 }
