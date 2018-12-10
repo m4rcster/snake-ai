@@ -23,7 +23,7 @@ class Brain {
     return weights;
   }
 
-  run(inputs) {
+  feedForward(inputs) {
     for(let i = 0; i < this.layers.length; i++) {
       let layer = this.layers[i];
       inputs = this.activateLayer(inputs, layer);

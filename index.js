@@ -180,7 +180,7 @@ let snake = darwin.individual;
 game.handleKey('space');
 
 function turn(inputs, dx, dy) {
-  let output = snake.run(inputs);
+  let output = snake.feedForward(inputs);
   let winner = output.indexOf(Math.max(...output));
   let key = '';
 
