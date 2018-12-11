@@ -94,13 +94,6 @@ class SmartSnake extends Snake {
       }
     }
 
-    /*
-    this.debug('h:' + snake.x + ',' + snake.y +
-      '; l:' + cellLeft.x + ',' + cellLeft.y + '>' + clearLeft +
-      '; a:' + cellAhead.x + ',' + cellAhead.y + '>' + clearAhead +
-      '; r:' + cellRight.x + ',' + cellRight.y + '>' + clearRight)
-    */
-
     // check if apple is aligned with snake
     let foodAhead, foodLeft, foodRight;
     foodAhead = foodLeft = foodRight = false;
@@ -126,12 +119,6 @@ class SmartSnake extends Snake {
       if(apple.x < snake.x && apple.y === snake.y) foodLeft = true;
       if(apple.x > snake.x && apple.y === snake.y) foodRight = true;
     }
-
-    /*
-        this.debug('fa:' + foodAhead +
-          '; fl:' + foodLeft +
-          '; fr:' + foodRight);
-    */
 
     return [clearLeft, clearAhead, clearRight, foodLeft, foodAhead, foodRight];
   }
@@ -166,7 +153,7 @@ class SmartSnake extends Snake {
 
 
 let Darwin = require('./src/darwin');
-const snakesPerGen = 10;
+const snakesPerGen = 50;
 const gameSpeed = 50;
 
 const json = require('./data/save-0812-50.json');
@@ -217,7 +204,7 @@ function turn(inputs, dx, dy) {
     }
   }
 
-  game.debug('>' + key)
+  game.debug('Generation: ' + darwin.currentGeneration + ', Individual: ' + darwin.individual.id)
 
   game.handleKey(key);
 }

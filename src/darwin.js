@@ -63,11 +63,13 @@ class Darwin {
     var average = this.individuals.map(s => s.fitness).reduce((p, c) => p + c, 0) / this.individuals.length;
     log('generation ' + this.currentGeneration + ' average: ' + average);
 
+    let id = 0;
+
     for(let i = 0; i < winnerCount; i++) {
       let individual = this.individuals[i];
       log('winner: ' + individual.id + ', score: ' + individual.score + ', fitness: ' + individual.fitness);
       for(let j = 0; j < 1 / this.winnerRate; j++) {
-        nextIndividuals.push(this.mutate(individual, i * winnerCount + j));
+        nextIndividuals.push(this.mutate(individual, id++));
       }
     }
 
@@ -76,6 +78,7 @@ class Darwin {
     log('generation: ' + this.currentGeneration + ', new snakes', nextIndividuals.length);
 
     this.individuals = nextIndividuals;
+    log(this.individuals)
   }
 
   mutate(individual, id) {
